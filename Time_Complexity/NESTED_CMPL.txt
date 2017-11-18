@@ -1,0 +1,5 @@
+ [X] O(N * N) time, O(1) space
+ []O(N) time, O(N) space
+ []O(N) time, O(N) space
+ []O(N * N) time, O(N) space
+ []O(N * N * N) time, O(1) space

@@ -1,0 +1,5 @@
+[] O(N)
+[] O(Sqrt(N))
+[] O(N / 2)
+[X] O(log N)
+[] O(log(log N))

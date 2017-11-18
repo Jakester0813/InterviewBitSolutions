@@ -1,0 +1,4 @@
+ []O(N)
+ []O(N*log(N))
+ []O(N * Sqrt(N))
+ [X]O(N*N)

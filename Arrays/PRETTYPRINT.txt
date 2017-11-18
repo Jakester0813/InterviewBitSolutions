@@ -1,0 +1,65 @@
+public class Solution {
+	
+        public ArrayList<ArrayList<Integer>> prettyPrint(int a) {
+
+	    ArrayList<ArrayList<Integer>> result = new ArrayList<>();
+
+	    int i = 0;
+
+            int n = 2 * a - 1;
+
+            int[][] resultArr = new int[n][n];
+
+        
+    int top = 0, bottom = n - 1;
+
+            int left = 0, right = n - 1;
+
+        
+    while (top <= bottom && left <= right){
+
+                for(i = top; i<= bottom; i++){
+
+                    resultArr[i][left] = a;
+  
+                  resultArr[i][right] = a;
+    
+            }
+    
+            for(i = left; i <= right; i++){
+  
+                resultArr[top][i] = a;
+  
+                resultArr[bottom][i] = a;
+  
+              }
+
+                top++;
+                bottom--;
+
+                left++;
+                right--;
+                a--;
+
+            }
+ 
+
+           for (i = 0; i < n; i++) {
+
+                ArrayList<Integer> list = new ArrayList<>();
+    
+            for (int j = 0; j < n; j++) {
+
+                    list.add(resultArr[i][j]);
+
+                }
+
+                result.add(list);
+
+            }
+
+
+        return result;
+
+    }
+}

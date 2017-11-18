@@ -1,0 +1,45 @@
+public class Solution {
+
+	public ListNode subtract(ListNode a) {
+
+	    ArrayList<Integer> solution = new ArrayList<Integer>();
+
+	    solution.addAll(a);
+
+	    Collections.sort(solution);
+
+	    int prevInt = solution.get(0), consectInt = 1, longestConsectInt = 1;
+
+	    for(int i = 1; i < solution.size(); i++){
+
+	        if(solution.get(i) - prevInt == 1){
+
+	            consectInt++;
+
+	        }
+
+	        else if (solution.get(i) - prevInt > 1){
+
+	            if(longestConsectInt < consectInt){
+
+	                longestConsectInt = consectInt;
+
+	            }
+
+	            consectInt = 1;
+
+	        }
+
+	        prevInt = solution.get(i);
+
+	    }
+
+	    if(longestConsectInt < consectInt){
+
+	                longestConsectInt = consectInt;
+
+	    }
+
+	    return longestConsectInt;
+	}
+}
