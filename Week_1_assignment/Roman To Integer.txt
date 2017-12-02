@@ -1,0 +1,82 @@
+public class Solution {
+
+	public int value(char c){
+
+	    if (c == 'I')
+
+            	return 1;
+
+            if (c == 'V')
+
+                return 5;
+
+            if (c == 'X')
+
+                return 10;
+
+            if (c == 'L')
+
+                return 50;
+
+            if (c == 'C')
+
+                return 100;
+
+            if (c == 'D')
+
+                return 500;
+
+            if (c == 'M')
+
+                return 1000;
+
+ 
+           return -1;
+
+	}
+
+	public int romanToInt(String a) {
+
+	    int solution = 0;
+
+	    for(int i = 0; i < a.length(); i++){
+
+	        int num = value(a.charAt(i));
+
+                if (i+1 <a.length()){
+
+                
+    int numTwo = value(a.charAt(i+1));
+
+ 
+                   if (num >= numTwo){
+
+                        solution = solution + num;
+
+                    }
+
+                    else{
+
+                        solution = solution + numTwo - num;
+
+                        i++;
+
+                    }
+
+                }
+
+                else{
+
+                    solution = solution + num;
+
+                    i++;
+
+                }
+
+	    }
+
+	    return solution;
+
+	}
+
+}

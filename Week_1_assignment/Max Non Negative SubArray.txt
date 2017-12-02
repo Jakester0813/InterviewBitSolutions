@@ -1,0 +1,71 @@
+public class Solution {
+
+	public ArrayList<Integer> maxset(ArrayList<Integer> a) {
+
+	    long maxSum = 0, sum = 0;
+
+	    int maxStart = 0, maxEnd = 0, currentStart = 0, currentEnd = 0;
+
+	    for(int i = 0; i < a.size(); i++){
+
+	        if (a.get(i) >= 0){
+
+	            sum += (long) a.get(i);
+
+	            if(sum > maxSum){
+
+	                maxSum = sum;
+
+	                maxStart = currentStart;
+
+	                maxEnd = currentEnd;
+
+	            }
+
+	            else if(sum == maxSum){
+
+	                if(currentEnd - currentStart > maxEnd - maxStart){
+
+	                   maxSum = sum;
+
+	                   maxStart = currentStart;
+
+	                   maxEnd = currentEnd;
+ 
+	                }
+
+	            }
+
+	        }
+
+	        else{
+
+	            sum = 0;
+
+	            currentStart = i+1;
+
+	        }
+
+	        currentEnd++;
+ 
+	    }
+
+	    ArrayList<Integer> solution = new ArrayList<Integer>();
+
+	    if(maxEnd >= 0 && a.get(maxEnd) >= 0){
+
+	        for(int j = maxStart; j <= maxEnd; j++){
+
+	            solution.add(a.get(j));
+
+	        }
+
+	    }
+
+	    
+	    
+            return solution;
+
+	}
+
+}
