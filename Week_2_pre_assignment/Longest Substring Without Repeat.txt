@@ -1,0 +1,47 @@
+public class Solution {
+
+	public int lengthOfLongestSubstring(String a) {
+
+	    HashMap<Character, Integer> subMap = new HashMap<Character, Integer>();
+
+	    int length = 0, maxLength = 0, prevPointer = 0;
+
+	    for(int i = 0; i < a.length(); i++){
+
+	        if(subMap.containsKey(a.charAt(i))){
+
+	            int prevInstPointer = subMap.get(a.charAt(i)) + 1;
+
+	            while(prevPointer < prevInstPointer){
+
+	                subMap.remove(a.charAt(prevPointer));
+
+	                prevPointer++;
+
+	                length--;
+
+	            }
+
+	        }
+
+	        if(a.charAt(i) != ' '){
+
+    	            subMap.put(a.charAt(i), i);
+
+    	            length++;
+
+    	            if(length > maxLength){
+
+    	                maxLength = length;
+
+    	            }
+
+	        }
+
+	    }
+
+	    return maxLength;
+
+	}
+
+}

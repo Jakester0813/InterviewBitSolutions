@@ -1,0 +1,89 @@
+public class Solution {
+
+    public int lPalin(ListNode A) {
+
+        if(A == null){
+
+            return 0;
+
+        }
+
+        ListNode head, headPrev, current, prev, nextPtr;
+
+        ListNode temp, runner;
+
+        runner = A.next;
+
+        head = A;
+
+        
+
+        headPrev = new ListNode(A.val);
+
+        current = headPrev;
+
+
+        while(runner != null){
+
+            temp = new ListNode(runner.val);
+
+            runner = runner.next;
+
+            current.next = temp;
+
+            temp.next = runner;
+
+            current = current.next;
+
+        }
+
+        
+
+        current = headPrev;
+
+        prev = null;
+
+        
+
+        while(current != null){
+
+            nextPtr = current.next;
+
+            current.next = prev;
+
+            prev = current;
+
+            current = nextPtr;
+
+        }
+
+        
+
+
+        headPrev = prev;
+
+        nextPtr = head;
+
+        while(prev != null && nextPtr != null){
+
+            if(nextPtr.val != prev.val){
+
+                return 0;
+
+            }
+
+            nextPtr = nextPtr.next;
+
+            prev = prev.next;
+
+        }
+
+        
+
+        return 1;
+    
+    
+
+    }
+
+}

@@ -1,0 +1,59 @@
+public class Solution {
+
+	public ListNode addTwoNumbers(ListNode a, ListNode b) {
+
+	    ListNode node, prev = null, head = null;
+
+	    int sum = 0, carry = 0;
+
+	    while (a != null || b != null || carry != 0) {
+
+	        node = new ListNode(0);
+
+	        sum = carry;
+
+	        if (head == null) 
+	
+                    head = node;
+
+       
+	        if (prev != null)
+ 
+	            prev.next = node;
+
+	        
+		if (a != null) {
+
+	            sum += a.val;
+
+	            a = a.next;
+
+	        }
+
+	        if (b != null) {
+
+	            sum += b.val;
+
+	            b = b.next;
+
+	        }
+
+	        
+
+	        node.val = sum % 10;
+
+	        sum /= 10;
+
+	        carry = sum;
+
+       
+	        prev = node;
+
+	        
+	  
+            }
+
+	return head;
+
+	}
+}
