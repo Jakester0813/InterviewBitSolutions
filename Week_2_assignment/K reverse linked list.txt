@@ -1,0 +1,81 @@
+public class Solution {
+
+    public ListNode reverseList(ListNode A, int B) {
+
+
+        if(B == 1){
+
+            return A;
+
+        }
+               ListNode current;
+
+        ArrayList<Integer> values = new ArrayList<Integer>();
+
+        int count = 0;
+
+        current = A;
+
+        
+                while(current != null){
+
+            values.add(current.val);
+
+            current = current.next;
+
+        }
+
+        
+
+        current = A;
+
+        int a, b, temp;
+
+        for(int i = 0; i < values.size(); i+=B){
+
+            a = i;
+
+            b = (i + B - 1);
+
+            while(a < b){
+                     temp = values.get(b);
+
+                values.set(b,values.get(a));
+
+                values.set(a,temp);
+
+                a++;
+                        b--;
+
+            }
+
+        }
+
+        
+
+        current = A;
+
+        
+
+        ListNode solution = A;
+
+        int i = 0;
+
+        while(current != null){
+
+            current.val = values.get(i);
+
+            current = current.next;
+
+            i++;
+
+        }
+
+        
+                return solution;
+
+        
+
+    }
+
+}

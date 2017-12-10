@@ -1,0 +1,135 @@
+public class Solution {
+
+	public ListNode partition(ListNode a, int b) {
+
+	    if(a == null){
+
+	        return a;
+
+	    }
+
+	    
+	    ListNode smallHead = null, smallRunner = null,
+ 
+	             equalHead = null, equalRunner = null,
+	                                  greaterHead = null, greaterRunner = null;
+
+	    ListNode current = a;
+
+	    current = a;
+
+	    while(current != null){
+	        		if(current.val < b){
+
+	            if(smallHead == null){
+
+	                smallHead = new ListNode(current.val);	                			smallRunner = smallHead;
+
+	            }
+
+	            else{
+
+	                smallRunner.next = new ListNode(current.val);
+	                		smallRunner = smallRunner.next;
+
+	            }
+
+	            
+
+	        }
+
+	        else if (current.val == b){
+	            	    if(equalHead == null){
+
+	                equalHead = new ListNode(current.val);
+
+	                    equalRunner = equalHead;
+	            	    }
+
+	            else{
+
+	                equalRunner.next = new ListNode(current.val);
+
+	                equalRunner = equalRunner.next;
+
+	            }
+
+	        }
+
+	        else{
+
+	            if(greaterHead == null){
+	                			greaterHead = new ListNode(current.val);
+	                greaterRunner = greaterHead;
+
+	            }
+
+	            else{
+	                		greaterRunner.next = new ListNode(current.val);
+
+	                greaterRunner = greaterRunner.next;
+
+	            }
+   
+	        	}
+
+	        current = current.next;
+
+	    }
+
+	    
+
+	    //possible cases
+
+	    //2) equal is only null
+
+	    //4) smaller is only non-null
+
+	    
+ListNode solution = null;
+
+	    if(greaterHead != null){
+
+	        solution = greaterHead;
+	               }
+
+	    
+
+	    if(equalHead != null){
+
+	        solution = equalHead;
+
+	        if(greaterHead != null){
+	            			equalRunner.next = equalHead;
+    
+	        }
+
+	    }
+
+	    
+if(smallHead != null){
+
+	        solution = smallHead;
+	        		if(equalHead != null){
+
+	            smallRunner.next = equalHead;
+
+	        }
+
+	        if(equalHead == null && greaterHead != null){
+
+	            smallRunner.next = greaterHead;
+
+	        }
+
+	    }
+
+	    
+
+	    
+
+	    return solution;
+
+	}
+
+}

@@ -1,0 +1,113 @@
+public class Solution {
+
+	public String fractionToDecimal(int numerator, int denominator) {
+
+	    //checks if either numerator or denominator are 0
+
+	    if(denominator == 0){
+
+	        return "";
+
+	    }
+
+	    if(numerator == 0){
+
+	        return "0";
+
+	    }
+
+	    
+
+	    StringBuilder resultSb = new StringBuilder();
+
+	    long num = (long) numerator;
+
+	    long den = (long) denominator;
+
+	    if(num * den < 0){
+
+	        resultSb.append("-");
+
+	    }
+
+	    
+            num = Math.abs(num);
+
+	    den = Math.abs(den);
+
+	    
+
+	    //case if numerator and denominator divide equally
+
+	    long resultLong = (int)num / (int)den;
+
+	    if(resultLong < 0){
+
+	        resultLong *= -1;
+
+	    }
+
+	    resultSb.append(resultLong);
+
+	    long remainderLong = (num % den) * 10;
+
+	    if(remainderLong == 0){
+
+	        return resultSb.toString();
+
+	    }
+
+	    
+
+	    //If we get here, then the numbers didn't divide evenly
+
+	    resultSb.append(".");
+
+	    
+
+	    HashMap<Long, Integer> datMap = new HashMap<Long, Integer>();
+
+	    
+
+	    while (remainderLong != 0) {
+
+    		// digits would be repeating in this block, repeating decimal case take care of
+
+    		if (datMap.containsKey(remainderLong)) {
+
+    			int mappedInt = datMap.get(remainderLong);
+ 
+    			String begStr = resultSb.toString().substring(0, mappedInt);
+
+    			String endStr = resultSb.toString().substring(mappedInt, resultSb.length());
+
+    			resultSb = new StringBuilder(begStr);
+
+    			resultSb.append("(").append(endStr).append(")");
+
+    			return resultSb.toString();
+
+    		}
+
+ 
+    		// otherwise continue until we get the repeating decimal
+
+    		datMap.put(remainderLong, resultSb.length());
+
+    		resultLong = remainderLong / den;
+
+    		resultSb.append(resultLong);
+
+    		remainderLong = (remainderLong % den) * 10;
+
+	    }
+
+	    
+
+	    return resultSb.toString();
+
+	    
+
+	}
+
+}

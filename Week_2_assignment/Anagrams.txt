@@ -1,0 +1,63 @@
+public class Solution {
+
+	public ArrayList<ArrayList<Integer>> anagrams(final List<String> a) {
+
+	
+    
+	    //set solution var
+
+	    ArrayList<ArrayList<Integer>> lists = new ArrayList<ArrayList<Integer>>();
+
+	    HashMap<String, ArrayList<Integer>> stringMap = new HashMap<String, ArrayList<Integer>>();
+
+	    ArrayList<Integer> ints;
+
+	    for(int i = 0; i < a.size(); i++){
+
+	        char[] charArr = a.get(i).toCharArray();
+
+	        Arrays.sort(charArr);
+
+	        String s = new String(charArr);
+
+	        if(stringMap.containsKey(s)){
+
+	            ints = stringMap.get(s);
+
+	            ints.add(i+1);
+
+	            stringMap.put(s,ints);
+
+	        }
+
+	        else{
+
+	            ints = new ArrayList<Integer>();
+
+	            ints.add(i+1);
+
+	            stringMap.put(s, ints);
+
+	        }
+
+	        
+
+	    }
+
+	    
+
+	    String[] strArr = stringMap.keySet().toArray(new String[stringMap.keySet().size()]);
+
+	    for(int j = 0; j < strArr.length; j++){
+
+	        lists.add(stringMap.get(strArr[j]));
+
+	    }
+
+	    return lists;
+
+	    
+
+	}
+
+}
