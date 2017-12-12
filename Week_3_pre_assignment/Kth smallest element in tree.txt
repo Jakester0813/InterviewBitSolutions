@@ -1,0 +1,71 @@
+
+public class Solution {
+
+    public int kthsmallest(TreeNode root, int k) {
+
+        Stack<TreeNode> stack = new Stack<TreeNode>();
+
+        ArrayList<Integer> values = new ArrayList<Integer>();
+
+        if(root == null){
+
+            return 0;
+
+        }
+
+        
+
+        TreeNode datNode = root;
+
+        
+
+        //Inorder traversal to get the values for the solution
+
+        while(datNode != null){
+
+            stack.push(datNode);
+
+            datNode = datNode.left;
+
+        }
+
+        
+
+        while(stack.size() > 0){
+            datNode = stack.pop();
+
+            values.add(datNode.val);
+
+            
+
+            if(datNode.right != null){
+
+                datNode = datNode.right;
+
+                
+
+                while(datNode != null){
+
+                    stack.push(datNode);
+
+                    datNode = datNode.left;
+
+                }
+
+            }
+
+        }
+
+        
+
+        Collections.sort(values);
+
+        
+
+        return values.get(k-1);
+
+        
+
+    }
+
+}

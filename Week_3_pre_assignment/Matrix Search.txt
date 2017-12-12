@@ -1,0 +1,81 @@
+public class Solution {
+
+	public int searchMatrix(ArrayList<ArrayList<Integer>> a, int b) {
+
+	
+    
+	    if(a.size() == 0){
+	        return 0;
+
+	    }
+
+	    
+
+	    for(ArrayList<Integer> datList : a){
+
+	    
+    
+	        if(datList.get(0) <= b && datList.get(datList.size()-1) >= b){
+
+	            int left = 0, right = datList.size()-1;
+
+	            
+
+	            //1: l = 0, r = 3, mid = 1, arr[mid] = 84, b = 81
+
+	            //2: l = 2, r = 3, mid = 1
+
+	           
+ 
+	            
+
+	            //l = 3, r = 4, mid = 4
+	            while(left <= right){
+
+	                int mid = left + (right-1)/2;
+
+	                if(mid >= datList.size()){
+
+	                    mid = datList.size()-1;
+
+	                }
+
+
+	                if(datList.get(mid) == b){
+
+	                    return 1;
+
+	                }
+
+
+	                if(datList.get(mid) < b){
+
+	                    left = mid + 1;
+
+	                }
+
+
+	                else{
+
+	                    right = mid - 1;
+
+	                }
+
+	            }
+
+
+	            return 0;
+
+	        }
+
+	    }
+
+	    
+
+	    
+
+	    return 0;
+
+	}
+
+}

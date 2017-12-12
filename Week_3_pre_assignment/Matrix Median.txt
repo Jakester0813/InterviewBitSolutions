@@ -1,0 +1,91 @@
+public class Solution {
+    public int findMedian(ArrayList<ArrayList<Integer>> A) {
+
+        int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+
+        
+
+        for(ArrayList<Integer> datList : A){
+
+            if(datList.get(0) < min){
+
+                min = datList.get(0);
+
+            }
+
+
+            if(datList.get(datList.size() - 1) > max){
+
+                max = datList.get(datList.size() - 1);
+
+            }
+
+        }
+
+
+        int rows = A.size();
+
+        int columns = A.get(0).size();
+
+        int median = (rows * columns + 1) / 2;
+
+        
+
+        while(min < max){
+
+            int mid = min + (max - min) / 2;
+            int datInt = 0;
+
+            int spot = 0;
+
+            for(int i = 0; i < rows; i++){
+
+                datInt = Collections.binarySearch(A.get(i), mid);
+
+                
+
+                if(datInt < 0){
+                    datInt = Math.abs(datInt) - 1;
+
+                }
+    
+            else{
+
+                    while(datInt < A.get(i).size() && A.get(i).get(datInt) == mid){
+
+                        datInt += 1;
+
+                    }
+
+                }
+
+                
+ 
+               spot = spot + datInt;
+
+            }
+
+            
+
+            if(spot < median){
+
+                min = mid+1;
+
+            }
+
+            else{
+
+                max = mid;
+            }
+
+        }
+
+        
+ 
+        return min;
+
+        
+
+    }
+
+}

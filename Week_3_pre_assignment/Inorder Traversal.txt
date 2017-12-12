@@ -1,0 +1,57 @@
+public class Solution {
+
+	public ArrayList<Integer> inorderTraversal(TreeNode a) {
+
+	    ArrayList<Integer> solution = new ArrayList<Integer>();
+
+	    Stack<TreeNode> traversingStack = new Stack<TreeNode>();
+
+	    TreeNode datNode = a;
+
+	    
+
+	    //push all of the left children
+
+	    while(datNode != null){
+
+	        traversingStack.push(datNode);
+
+	        datNode = datNode.left;
+
+	    }
+
+	    
+
+	    while(traversingStack.size() > 0){
+
+	        datNode = traversingStack.pop();
+
+	        solution.add(datNode.val);
+
+	        
+
+	        //if the right isn't null, go right
+
+	        if(datNode.right != null){
+
+	            datNode = datNode.right;
+
+	            
+
+	            while(datNode != null){
+
+	                traversingStack.push(datNode);
+
+	                datNode = datNode.left;
+
+	            }
+
+	        }
+
+	    }
+
+	    return solution;
+
+	}
+
+}
