@@ -1,0 +1,57 @@
+public class Solution {
+
+	public int maxDepth(TreeNode a) {
+
+	    if(a == null){
+
+	        return 0;
+
+	    }
+
+	    
+
+	    return searchMD(a,1);
+
+	}
+
+	
+
+	public int searchMD(TreeNode node, int depth){
+
+	    if(node.left == null && node.right == null){
+
+	        return depth;
+
+	    }
+
+	    
+
+	    if(node.left != null && node.right != null){
+
+	        int left = searchMD(node.left, depth + 1);
+
+	        int right = searchMD(node.right, depth + 1);
+	        
+	        return left > right ? left : right;
+
+	    }
+
+	    
+
+	    if(node.left != null){
+
+	        return searchMD(node.left, depth + 1);
+
+	    }
+
+	    
+
+	    
+
+	    return searchMD(node.right, depth + 1);
+
+	
+    
+	}
+
+}

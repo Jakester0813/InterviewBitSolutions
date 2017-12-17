@@ -1,0 +1,61 @@
+public class Solution {
+
+	// DO NOT MODIFY THE LIST
+	public int search(final List<Integer> a, int b) {
+
+	    //approaches
+
+	    int left = 0;
+
+	    int right = a.size()-1;
+
+	    while (left <= right) {
+
+                // Avoid overflow, same as M=(L+R)/2
+
+                int mid = left + ((right - left) / 2);
+
+                if (a.get(mid) == b){
+        
+                    return mid;
+
+                }
+
+            
+ 
+   
+                // the bottom half is sorted
+
+                if (a.get(left) <= a.get(mid)) {
+
+                    if (a.get(left) <= b && b < a.get(mid))
+
+                        right = mid - 1;
+
+                    else
+
+                        left = mid + 1;
+
+                }
+
+                // the upper half is sorted
+
+            
+                else {
+
+                    if (a.get(mid) < b && b <= a.get(right))
+
+                        left = mid + 1;
+
+                    else
+ 
+                       right = mid - 1;
+                }
+
+            }
+
+            return -1;
+
+	}
+
+}

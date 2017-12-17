@@ -1,0 +1,44 @@
+public class Solution {
+
+	public int isSameTree(TreeNode a, TreeNode b) {
+
+	    return checkSameTree(a, b);
+
+	}
+
+	
+
+	public int checkSameTree(TreeNode a, TreeNode b){
+	                if(a == null && b == null){
+
+	        return 1;
+
+	    }
+
+	    
+
+	    if(a == null || b == null){
+
+	        return 0;
+
+	    }
+
+	    
+	    if(a.val != b.val){
+
+	        return 0;
+	    }
+
+	    
+
+	    int left = checkSameTree(a.left, b.left);
+
+	    int right = checkSameTree(a.right, b.right);
+
+	    
+
+	    return left > right ? right : left;
+
+	}
+
+}
